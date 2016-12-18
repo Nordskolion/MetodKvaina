@@ -38,6 +38,7 @@ public:
 	int dec2bin(int num);
 	string helptobin(string temp_s);
 	vector<string> KvainStepOne(vector<string> list);
+	bool KvainBool(vector<string> list);
 
 
 
