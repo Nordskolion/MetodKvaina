@@ -28,6 +28,11 @@ Function::Function(string num)
 
 	listoftrueStepTwo = KvainStepOne(listoftrue);
 
+	while (KvainBool(listoftrueStepTwo)) {
+		listoftrueStepTwo = KvainStepOne(listoftrueStepTwo);
+		cout<<"--------------------------------------"<<endl;
+	}
+
 
 	for (int i = 0; i < listoftrueStepTwo.size(); ++i)
 	{
@@ -42,25 +47,8 @@ Function::Function(string num)
 	}
 	cout << endl;
 
-	// while (KvainBool(listoftrueStepTwo))
-	listoftrueStepTwo = KvainStepOne(listoftrueStepTwo);
+// 0101010100000011
 
-
-
-	for (int i = 0; i < listoftrueStepTwo.size(); ++i)
-	{
-		cout << listoftrueStepTwo[i] << endl;
-		/* code */
-	}
-
-	for (int i = 0; i < listoftrue.size(); ++i)
-	{
-		cout << "           " << listoftrue[i];
-		/* code */
-	}
-	cout << endl;
-
-// 
 
 
 
@@ -111,7 +99,7 @@ vector<string> Function::KvainStepOne(vector<string> list)
 
 	for (int i = 0; i < list.size(); ++i)
 	{
-		
+
 		for (int j = 0; j < list.size() ; ++j)
 		{
 
@@ -148,7 +136,7 @@ vector<string> Function::KvainStepOne(vector<string> list)
 
 			}
 		}
-		if (flag4add) 
+		if (flag4add)
 		{
 			finaly.push_back(list[i]);
 		}
@@ -163,46 +151,54 @@ bool Function::KvainBool(vector<string> list)
 {
 	int delta = 0;
 	int alpha = 0;
-	bool flag = 0;
+	bool flag = false;
 	vector<string> finaly;
 	string for1time;
 	bool result;
+	result = false;
 
 	for (int i = 0; i < list.size(); ++i)
 	{
+		flag = false;
 		for (int j = 0; j < list.size(); ++j)
 		{
+			delta = 0;
 			for (int a = 0; a < size ; ++a)
 			{
 				if (list[i][a] != list[j][a])
 				{
 					delta++;
+					// cout << "Count --- "	 << delta << endl;
 					alpha = a;
 				}
-				if (delta == 1)
+			}
+			if (delta == 1)
+			{
+				// cout<<"DONT LOOK ON EXP"<<endl;
+
+				for1time = list[i];
+				for1time[alpha] = '*';
+				flag = true;
+				// for (int l = 0; l < finaly.size() ; ++l)
+				// {
+
+				// 	if (for1time == finaly[l])
+				// 	{
+				// 		flag = false;
+				// 	}
+
+				// }
+
+
+				if (flag)
 				{
 
-					for1time = list[i];
-					for1time[alpha] = '*';
-					flag = true;
-					for (int l = 0; l < finaly.size() ; ++l)
-					{
-
-						if (for1time == finaly[l])
-						{
-							flag = false;
-						}
-
-					}
-
-
-					if (flag)
-					{
-						result = false;	/* code */
-					}
-
+					// cout << "COO	L_GUYS" << endl;
+					result = true;	/* code */
 				}
+
 			}
+
 		}
 
 	}
