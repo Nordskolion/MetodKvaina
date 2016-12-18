@@ -6,7 +6,7 @@ Function::Function(string num)
 {
 	function = num;
 	int temp_size = function.size();
-	cout<<temp_size<<"eto temp"<<endl;
+	// cout<<temp_size<<"eto temp"<<endl;
 	size = 0;
 	int temp = temp_size;
 	while(temp_size != 1)
@@ -20,10 +20,26 @@ Function::Function(string num)
 	{
 		if (function[i]=='1')
 		{
-			// listoftrue.push_back(to_string(dec2bin(temp_size)));
-			cout<<helptobin(to_string(dec2bin(i)))<<endl;
+			listoftrue.push_back(helptobin(to_string(dec2bin(i))));
+			// cout<<helptobin(to_string(dec2bin(i)))<<endl;
 		}
 	}
+
+	listoftrueStepTwo = KvainStepOne(listoftrue);
+	for (int i = 0; i < listoftrueStepTwo.size(); ++i)
+	{
+		cout<<listoftrueStepTwo[i]<<endl;
+		/* code */
+	}
+
+
+
+
+
+
+
+
+
 
 }
 
@@ -53,4 +69,56 @@ string Function::helptobin(string temp_s)
 		
 	}
 	return temp_s;
+}
+
+
+
+vector<string> Function::KvainStepOne(vector<string> list)
+{
+	bool flag = true;
+	int delta = 0;
+	vector<string> finaly;
+	string for1time;
+	int alpha = 0;
+
+	for (int i = 0; i < list.size(); ++i)
+	{
+		for (int j = 0; j < list.size() ; ++j)
+		{
+			delta = 0;
+			for (int a = 0; a < size; ++a)
+			{
+				if(list[i][a] != list[j][a])
+				{
+					delta++;
+					alpha = a;
+				}
+			}
+			if (delta == 1)
+			{
+
+
+				for1time = list[i];
+				for1time[alpha]='*';
+				flag = true;
+				for (int l = 0; l < finaly.size() ; ++l)
+				{
+					
+					if (for1time == finaly[l])
+					{
+						flag = false;
+					}
+					
+				}
+				
+
+				if (flag)
+				{
+					finaly.push_back(for1time);	/* code */
+				}
+				
+			}
+		}
+	}
+	return finaly;
 }
